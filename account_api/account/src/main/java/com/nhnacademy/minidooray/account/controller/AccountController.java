@@ -56,7 +56,7 @@ public class AccountController {
     /**
      * 회원정보 조회
      */
-    @GetMapping("/{memberId}/detail")
+    @GetMapping("/{memberId}")
     public ResponseEntity<Member> getMember(@PathVariable("memberId") String memberId, @RequestHeader(name = "clientId", required = false) String clientId) {
         if (System.getenv("client_secret") != null && clientId != null && clientId.equals(System.getenv("client_secret"))) {
             Member member = memberService.getMember(memberId);
@@ -92,7 +92,7 @@ public class AccountController {
     /**
      * 회원 아이디, 비밀번호 조회
      */
-    @GetMapping("/{memberId}/password")
+    @GetMapping("/{memberId}/id")
     public ResponseEntity<Map<String,String>> getIdAndPasswordById(@PathVariable String memberId) {
         Member member = memberService.getMember(memberId);
 
